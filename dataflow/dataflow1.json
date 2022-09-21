@@ -30,6 +30,9 @@
 				},
 				{
 					"name": "select2"
+				},
+				{
+					"name": "parse1"
 				}
 			],
 			"scriptLines": [
@@ -60,12 +63,15 @@
 				"          testcolumnparse = toInteger('1.019','#.###','de'),",
 				"          testcolumnparse2 = toInteger(trim(Nyepositive),'#.###','de'),",
 				"          trimNyePositive = trim(Nyepositive)) ~> derivedColumn1",
-				"derivedColumn1 select(mapColumn(",
+				"parse1 select(mapColumn(",
 				"          Date,",
 				"          AntalSmittede = testcolumnparse2",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select2",
+				"derivedColumn1 parse(NyePositiveParsed = ERROR_FUNCTION(''),",
+				"     format: 'json',",
+				"     documentForm: 'documentPerLine') ~> parse1",
 				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     deletable:false,",

@@ -2,7 +2,7 @@
 	"name": "covid19zipfile",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SSI http",
+			"referenceName": "ssi overvaagningsdata url",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {

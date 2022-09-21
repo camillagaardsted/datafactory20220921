@@ -93,8 +93,32 @@
 							}
 						}
 					},
+					"sink": {
+						"type": "BinarySink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						}
+					},
 					"enableStaging": false
-				}
+				},
+				"inputs": [
+					{
+						"referenceName": "covid19zipfile",
+						"type": "DatasetReference",
+						"parameters": {
+							"dailyfilename": {
+								"value": "@variables('zipfilename')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "csvfiles",
+						"type": "DatasetReference"
+					}
+				]
 			},
 			{
 				"name": "Set current date",

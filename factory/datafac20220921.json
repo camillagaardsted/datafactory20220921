@@ -1,0 +1,9 @@
+{
+	"name": "datafac20220921",
+	"location": "westeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "df8cf2cd-5ba8-46b8-9a5e-78942a8c4ce5",
+		"tenantId": "f28e8f25-3766-4ca8-a1ee-c085311bc52a"
+	}
+}

@@ -1,0 +1,20 @@
+{
+	"name": "powerquery1",
+	"properties": {
+		"type": "WranglingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"name": "positiveovertidcsvfil",
+					"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> positiveovertidcsvfil",
+					"dataset": {
+						"referenceName": "positiveovertidcsvfil",
+						"type": "DatasetReference"
+					}
+				}
+			],
+			"script": "section Section1;\r\nshared positiveovertidcsvfil = let AdfDoc = AzureStorage.DataLakeContents(\"https://datalakesu20220919.dfs.core.windows.net/covid19data/overvaagningsdata-covid19-20092022-f3h3/Test_pos_over_time.csv\"),Csv = Csv.Document(AdfDoc, [Delimiter = \";\", Encoding = TextEncoding.Utf8, QuoteStyle = QuoteStyle.Csv]), PromotedHeaders = Table.PromoteHeaders(Csv, [PromoteAllScalars = true]) in  PromotedHeaders;\r\nshared UserQuery = let Source = #\"positiveovertidcsvfil\",\r\n  #\"Removed other columns\" = Table.SelectColumns(Source, {\"Date\", \"NewPositive\"}) in #\"Removed other columns\";\r\n",
+			"documentLocale": "en-us"
+		}
+	}
+}

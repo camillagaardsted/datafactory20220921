@@ -1,0 +1,17 @@
+{
+	"name": "Synapsecovid19tabel",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSynapseAnalytics",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "covid19data"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

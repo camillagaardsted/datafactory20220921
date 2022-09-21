@@ -2,16 +2,15 @@
 	"name": "csvfiles",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureBlobStorage1",
+			"referenceName": "Vores datalake",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "Binary",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"folderPath": "covid19dk",
-				"container": "demodata"
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "covid19data"
 			}
 		}
 	},

@@ -543,6 +543,44 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/Hver dag kl1405')]",
+			"type": "Microsoft.DataFactory/factories/triggers",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"runtimeState": "Started",
+				"pipelines": [
+					{
+						"pipelineReference": {
+							"referenceName": "ssi pipeline",
+							"type": "PipelineReference"
+						},
+						"parameters": {}
+					}
+				],
+				"type": "ScheduleTrigger",
+				"typeProperties": {
+					"recurrence": {
+						"frequency": "Day",
+						"interval": 1,
+						"startTime": "2022-09-21T11:25:00",
+						"timeZone": "Romance Standard Time",
+						"schedule": {
+							"minutes": [
+								5
+							],
+							"hours": [
+								14
+							]
+						}
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/ssi pipeline')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/dataflow1')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -575,9 +613,6 @@
 							"name": "derivedColumn1"
 						},
 						{
-							"name": "filter1"
-						},
-						{
 							"name": "select2"
 						}
 					],
@@ -605,11 +640,10 @@
 						"     ),",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true) ~> select1",
-						"filter1 derive(Nyepositive = toInteger(trim(replace(Nyepositive,'.',''))),",
+						"select1 derive(Nyepositive = toInteger(trim(replace(Nyepositive,'.',''))),",
 						"          testcolumnparse = toInteger('1.019','#.###','de'),",
 						"          testcolumnparse2 = toInteger(trim(Nyepositive),'#.###','de'),",
 						"          trimNyePositive = trim(Nyepositive)) ~> derivedColumn1",
-						"select1 filter(like(Nyepositive,'%.%')) ~> filter1",
 						"derivedColumn1 select(mapColumn(",
 						"          Date,",
 						"          AntalSmittede = testcolumnparse2",
@@ -659,44 +693,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/positiveovertidcsvfil')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/Hver dag kl1405')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Started",
-				"pipelines": [
-					{
-						"pipelineReference": {
-							"referenceName": "ssi pipeline",
-							"type": "PipelineReference"
-						},
-						"parameters": {}
-					}
-				],
-				"type": "ScheduleTrigger",
-				"typeProperties": {
-					"recurrence": {
-						"frequency": "Day",
-						"interval": 1,
-						"startTime": "2022-09-21T11:25:00",
-						"timeZone": "Romance Standard Time",
-						"schedule": {
-							"minutes": [
-								5
-							],
-							"hours": [
-								14
-							]
-						}
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/pipelines/ssi pipeline')]"
 			]
 		}
 	]

@@ -573,6 +573,12 @@
 						},
 						{
 							"name": "derivedColumn1"
+						},
+						{
+							"name": "filter1"
+						},
+						{
+							"name": "select2"
 						}
 					],
 					"scriptLines": [
@@ -599,8 +605,18 @@
 						"     ),",
 						"     skipDuplicateMapInputs: true,",
 						"     skipDuplicateMapOutputs: true) ~> select1",
-						"select1 derive(Nyepositive = toInteger(trim(replace(Nyepositive,'.','')))) ~> derivedColumn1",
-						"derivedColumn1 sink(allowSchemaDrift: true,",
+						"filter1 derive(Nyepositive = toInteger(trim(replace(Nyepositive,'.',''))),",
+						"          testcolumnparse = toInteger('1.019','#.###','de'),",
+						"          testcolumnparse2 = toInteger(trim(Nyepositive),'#.###','de'),",
+						"          trimNyePositive = trim(Nyepositive)) ~> derivedColumn1",
+						"select1 filter(like(Nyepositive,'%.%')) ~> filter1",
+						"derivedColumn1 select(mapColumn(",
+						"          Date,",
+						"          AntalSmittede = testcolumnparse2",
+						"     ),",
+						"     skipDuplicateMapInputs: true,",
+						"     skipDuplicateMapOutputs: true) ~> select2",
+						"select2 sink(allowSchemaDrift: true,",
 						"     validateSchema: false,",
 						"     deletable:false,",
 						"     insertable:true,",

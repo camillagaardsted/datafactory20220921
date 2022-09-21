@@ -1,0 +1,32 @@
+{
+	"name": "Hver dag kl1405",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "ssi pipeline",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "ScheduleTrigger",
+		"typeProperties": {
+			"recurrence": {
+				"frequency": "Day",
+				"interval": 1,
+				"startTime": "2022-09-21T11:25:00",
+				"timeZone": "Romance Standard Time",
+				"schedule": {
+					"minutes": [
+						5
+					],
+					"hours": [
+						14
+					]
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,5 @@
+cosmos account:
+https://asacosmosdbeihyn3s.documents.azure.com:443/
+
+key til cosmos
+1Q3uDw3r7uitAcxh3Shi4uh3hQnj1c35ml6CJCM6UeOZsgDocjboXRKt0vIFckhV43kolUMQo1erBBuZBOsU3w==

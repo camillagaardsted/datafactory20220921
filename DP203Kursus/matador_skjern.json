@@ -1,0 +1,52 @@
+{
+    "id": "Skjernfamilien",
+    "lastName": "Andersen-Skjern",
+    "parents": [
+        {
+            "firstName": "Mads",
+            "skuespiller": "Jørgen Buckhøj",
+            "gender": "male"
+        },
+        {
+            "firstName": "Ingeborg",
+            "skuespiller": "Ghita Nørby",
+            "gender": "female"
+        }
+    ],
+    "children": [
+        {
+            "firstName": "Ellen",
+            "gender": "female",
+            "grade": 5,
+            "pets": [
+                {
+                    "givenName": "Ukendt", "type":"hest","race":"islænder"
+                }
+            ]
+        },
+        {
+            "firstName": "Daniel",
+            "gender": "male",
+            "grade": 3,
+            "pets": [
+                {
+                    "givenName": "ukendt", "type":"pony","race":"gadekryds"
+                }
+            ]
+        },
+        {
+            "firstName": "Erik",
+            "gender": "male",
+            "grade": 5,
+            "futuredream" : "Astronaut"
+        }
+    ],
+    "address": {
+        "streetname":"Algade",
+        "state": "DK",
+        "county": "Sjælland",
+        "city": "Korsbæk"
+    },
+    "creationDate": 20210107,
+    "isRegistered": true
+}

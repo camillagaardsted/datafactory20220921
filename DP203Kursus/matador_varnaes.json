@@ -1,0 +1,41 @@
+{
+    "id": "Varnæsfamilien",
+    "lastName": "Varnæs",
+    "parents": [
+        {
+            "firstName": "Hans Christian",
+            "actor": "Holger Juul Hansen",
+            "gender": "male"
+        },
+        {
+            "firstName": "Maude",
+            "actor": "Malene Schwartz",
+            "gender": "female"
+        }
+    ],
+    "children": [
+        {
+            "firstName": "Ulrik",
+            "gender": "male",
+            "grade": 5
+        },
+        {
+            "firstName": "Regitze",
+            "gender": "female",
+            "grade": 3,
+            "pets": [
+                {
+                    "givenName": "Vaks", "type":"hund","race":"gadekryds"
+                }
+            ]
+        }
+    ],
+    "address": {
+        "streetname":"Algade",
+        "state": "DK",
+        "county": "Sjælland",
+        "city": "Korsbæk"
+    },
+    "creationDate": 20210107,
+    "isRegistered": true
+}
